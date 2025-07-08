@@ -1,0 +1,58 @@
+import time
+
+def countdown_timer(time_duration):
+    for input_seconds in range(time_duration, -1, -1):
+        minutes = input_seconds // 60
+        seconds = input_seconds % 60
+        time.sleep(1)
+        if input_seconds >= 60:
+            print(f"{minutes} Minutes {seconds} Seconds")
+        else:
+            print(f'{seconds} seconds')
+    print("BOOM! You Are Busted!")
+
+def countdown_name(name):
+    for input_name in name:
+        print(input_name)
+        time.sleep(1)
+    print(name.title())
+
+print("Welcome To The Countdown Program")
+
+while True:
+    answer = input("Do you want to countdown name or time? Type name or time as input : ")
+    
+    if answer.lower() == "time":
+        time_duration = int(input("Enter The Time Duration (In Seconds) : "))
+        print("Your program is ready")
+        
+        while True:
+            start = input("Type 'Start' to start: ")
+            if start.lower() == "start":
+                countdown_timer(time_duration)
+                break
+            else:
+                print("Invalid response")
+        
+        break
+    
+    elif answer.lower() == "name":
+        while True:
+            name = input("Enter your name consisting of alphabetical characters only: ")
+            if name.isalpha():
+                print("Your program is ready")
+                while True:
+                    start = input("Type 'Start' to start: ")
+                    if start.lower() == "start":
+                        countdown_name(name)
+                        break
+                    else:
+                        print("Invalid response")
+                break
+            else:
+                print("Invalid name. Please enter a valid name.")
+        
+        break
+
+    else:
+        print("I can't do that. Please pick between name and time")
